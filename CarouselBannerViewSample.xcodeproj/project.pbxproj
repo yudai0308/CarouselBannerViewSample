@@ -7,15 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F6ECF53E28934EF400D694B2 /* CarouselBannerFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ECF53D28934EF400D694B2 /* CarouselBannerFooter.swift */; };
 		F6F6B9762891FE6300559570 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F6B9752891FE6300559570 /* AppDelegate.swift */; };
 		F6F6B9782891FE6300559570 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F6B9772891FE6300559570 /* SceneDelegate.swift */; };
 		F6F6B97A2891FE6300559570 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F6B9792891FE6300559570 /* ViewController.swift */; };
 		F6F6B97D2891FE6300559570 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6F6B97B2891FE6300559570 /* Main.storyboard */; };
 		F6F6B97F2891FE6500559570 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6F6B97E2891FE6500559570 /* Assets.xcassets */; };
 		F6F6B9822891FE6500559570 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6F6B9802891FE6500559570 /* LaunchScreen.storyboard */; };
+		F6F6B98A2892047C00559570 /* CarouselBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F6B9892892047C00559570 /* CarouselBannerCell.swift */; };
+		F6F6B98C2892084900559570 /* ViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F6B98B2892084900559570 /* ViewController+DataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F6ECF53D28934EF400D694B2 /* CarouselBannerFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselBannerFooter.swift; sourceTree = "<group>"; };
 		F6F6B9722891FE6300559570 /* CarouselBannerViewSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarouselBannerViewSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6F6B9752891FE6300559570 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6F6B9772891FE6300559570 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +28,8 @@
 		F6F6B97E2891FE6500559570 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F6F6B9812891FE6500559570 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F6F6B9832891FE6500559570 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F6F6B9892892047C00559570 /* CarouselBannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselBannerCell.swift; sourceTree = "<group>"; };
+		F6F6B98B2892084900559570 /* ViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+DataSource.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,13 +62,16 @@
 		F6F6B9742891FE6300559570 /* CarouselBannerViewSample */ = {
 			isa = PBXGroup;
 			children = (
+				F6F6B9832891FE6500559570 /* Info.plist */,
 				F6F6B9752891FE6300559570 /* AppDelegate.swift */,
+				F6F6B9892892047C00559570 /* CarouselBannerCell.swift */,
+				F6ECF53D28934EF400D694B2 /* CarouselBannerFooter.swift */,
 				F6F6B9772891FE6300559570 /* SceneDelegate.swift */,
 				F6F6B9792891FE6300559570 /* ViewController.swift */,
-				F6F6B97B2891FE6300559570 /* Main.storyboard */,
+				F6F6B98B2892084900559570 /* ViewController+DataSource.swift */,
 				F6F6B97E2891FE6500559570 /* Assets.xcassets */,
 				F6F6B9802891FE6500559570 /* LaunchScreen.storyboard */,
-				F6F6B9832891FE6500559570 /* Info.plist */,
+				F6F6B97B2891FE6300559570 /* Main.storyboard */,
 			);
 			path = CarouselBannerViewSample;
 			sourceTree = "<group>";
@@ -138,9 +147,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6F6B98C2892084900559570 /* ViewController+DataSource.swift in Sources */,
 				F6F6B97A2891FE6300559570 /* ViewController.swift in Sources */,
 				F6F6B9762891FE6300559570 /* AppDelegate.swift in Sources */,
 				F6F6B9782891FE6300559570 /* SceneDelegate.swift in Sources */,
+				F6ECF53E28934EF400D694B2 /* CarouselBannerFooter.swift in Sources */,
+				F6F6B98A2892047C00559570 /* CarouselBannerCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,8 +299,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PU9F4X6AA4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CarouselBannerViewSample/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -303,6 +317,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.WatanabeYudai.CarouselBannerViewSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -314,8 +329,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PU9F4X6AA4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CarouselBannerViewSample/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -330,6 +347,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.WatanabeYudai.CarouselBannerViewSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

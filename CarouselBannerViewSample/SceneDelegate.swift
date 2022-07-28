@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  CarouselBannerViewSample
-//
-//  Created by Watanabe Yudai on 2022/07/28.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {

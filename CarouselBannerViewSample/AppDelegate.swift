@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  CarouselBannerViewSample
-//
-//  Created by Watanabe Yudai on 2022/07/28.
-//
-
 import UIKit
 
 @main
