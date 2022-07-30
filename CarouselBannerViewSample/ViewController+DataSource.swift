@@ -12,6 +12,17 @@ extension ViewController {
         dataSource.apply(snapshot)
     }
     
+    func sectionProvider(sectionIndex: Int, environment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? {
+        switch sectionIndex {
+        case SectionType.carouselBanner.rawValue:
+            return self.carouselBannerSection { page in
+                self.carouselBannerFooter?.pageControl.currentPage = page
+            }
+        default:
+            fatalError()
+        }
+    }
+    
     func cellProvider(collectionView: UICollectionView, indexPath: IndexPath, sectionItem :SectionItem) -> UICollectionViewCell {
         switch sectionItem {
         case .carouselBannerCell(let image):
@@ -32,7 +43,7 @@ extension ViewController {
         }
     }
     
-    internal func carouselBannerSection(didChangePage: @escaping DidChangePage) -> NSCollectionLayoutSection {
+    func carouselBannerSection(didChangePage: @escaping DidChangePage) -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         

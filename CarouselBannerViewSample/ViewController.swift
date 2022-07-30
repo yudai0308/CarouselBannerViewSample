@@ -28,18 +28,8 @@ class ViewController: UIViewController {
         
         collectionView.register(CarouselBannerCell.self, forCellWithReuseIdentifier: CarouselBannerCell.id)
         collectionView.register(CarouselBannerFooter.self, forSupplementaryViewOfKind: CarouselBannerFooter.kind, withReuseIdentifier: CarouselBannerFooter.id)
-        
-        collectionView.collectionViewLayout = UICollectionViewCompositionalLayout { (sectionIndex, environment) -> NSCollectionLayoutSection? in
-            switch sectionIndex {
-            case SectionType.carouselBanner.rawValue:
-                return self.carouselBannerSection { page in
-                    self.carouselBannerFooter?.pageControl.currentPage = page
-                }
-            default:
-                fatalError()
-            }
-        }
-        
+
+        collectionView.collectionViewLayout = UICollectionViewCompositionalLayout(sectionProvider: sectionProvider)
         dataSource = DataSource(collectionView: collectionView, cellProvider: cellProvider)
         dataSource.supplementaryViewProvider = supplementaryViewProvider
         collectionView.dataSource = dataSource
