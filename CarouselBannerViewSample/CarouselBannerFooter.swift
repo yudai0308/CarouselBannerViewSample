@@ -2,6 +2,7 @@ import UIKit
 
 class CarouselBannerFooter: UICollectionReusableView {
     static let id = "CarouselBannerFooter"
+    static let kind = "CarouselBannerFooterKind"
     
     var pageControl: UIPageControl!
     
@@ -11,6 +12,7 @@ class CarouselBannerFooter: UICollectionReusableView {
         pageControl = UIPageControl(frame: CGRect(origin: .zero, size: self.bounds.size))
         pageControl.pageIndicatorTintColor = UIColor.systemGray4
         pageControl.currentPageIndicatorTintColor = UIColor.gray
+        pageControl.numberOfPages = 5
         self.addSubview(pageControl)
     }
     

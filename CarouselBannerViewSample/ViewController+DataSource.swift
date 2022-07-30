@@ -3,6 +3,7 @@ import UIKit
 extension ViewController {
     typealias DataSource = UICollectionViewDiffableDataSource<SectionType, SectionItem>
     typealias Snapshot = NSDiffableDataSourceSnapshot<SectionType, SectionItem>
+    typealias DidChangePage = (Int) -> Void
     
     func updateSnapshot(items: [SectionItem], to section: SectionType) {
         var snapshot = Snapshot()
@@ -21,21 +22,39 @@ extension ViewController {
         }
     }
     
-    internal func carouselBannerSection() -> NSCollectionLayoutSection {
-        // item, group の幅は画面幅と同じにする。
-        // fractionalWidth(1.0) を使うとズレが発生する。
-        let width = UIScreen.main.bounds.width
-        let itemSize = NSCollectionLayoutSize(widthDimension: .absolute(width), heightDimension: .fractionalHeight(1.0))
+    func supplementaryViewProvider(collectionView: UICollectionView, elementKind: String, indexPath: IndexPath) -> UICollectionReusableView {
+        switch elementKind {
+        case CarouselBannerFooter.kind:
+            carouselBannerFooter = collectionView.dequeueReusableSupplementaryView(ofKind: elementKind, withReuseIdentifier: CarouselBannerFooter.id, for: indexPath) as? CarouselBannerFooter
+            return carouselBannerFooter!
+        default:
+            return UICollectionReusableView()
+        }
+    }
+    
+    internal func carouselBannerSection(didChangePage: @escaping DidChangePage) -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(width), heightDimension: .absolute(200.0))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(200.0))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPaging
         
+        let footerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(50.0))
+        let sectionFooter = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: footerSize, elementKind: CarouselBannerFooter.kind, alignment: .bottom)
+        section.boundarySupplementaryItems = [sectionFooter]
+        
+        section.visibleItemsInvalidationHandler = { (visibleItems, offset, env) in
+            guard offset.x >= 0 else { return }
+            let contentWidth = env.container.contentSize.width
+            if (offset.x.remainder(dividingBy: contentWidth) == 0.0) {
+                let page = offset.x / contentWidth
+                didChangePage(Int(page))
+            }
+        }
+        
         return section
     }
-    
-    
 }
