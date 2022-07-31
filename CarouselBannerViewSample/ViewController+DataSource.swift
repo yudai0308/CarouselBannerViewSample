@@ -4,11 +4,14 @@ extension ViewController {
     typealias DataSource = UICollectionViewDiffableDataSource<SectionType, SectionItem>
     typealias Snapshot = NSDiffableDataSourceSnapshot<SectionType, SectionItem>
     typealias DidChangePage = (Int) -> Void
-    
-    func updateSnapshot(items: [SectionItem], to section: SectionType) {
+
+    func updateSnapshot(sectionData: Dictionary<SectionType, [SectionItem]>) {
         var snapshot = Snapshot()
-        snapshot.appendSections([section])
-        snapshot.appendItems(items, toSection: section)
+        let sections = Array(sectionData.keys)
+        snapshot.appendSections(sections)
+        for data in sectionData {
+            snapshot.appendItems(data.value, toSection: data.key)
+        }
         dataSource.apply(snapshot)
     }
     
@@ -37,6 +40,7 @@ extension ViewController {
         switch elementKind {
         case CarouselBannerFooter.kind:
             carouselBannerFooter = collectionView.dequeueReusableSupplementaryView(ofKind: elementKind, withReuseIdentifier: CarouselBannerFooter.id, for: indexPath) as? CarouselBannerFooter
+            carouselBannerFooter?.pageControl.numberOfPages = images.count
             return carouselBannerFooter!
         default:
             return UICollectionReusableView()
@@ -52,10 +56,10 @@ extension ViewController {
         
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPaging
-        
+            
         let footerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(50.0))
-        let sectionFooter = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: footerSize, elementKind: CarouselBannerFooter.kind, alignment: .bottom)
-        section.boundarySupplementaryItems = [sectionFooter]
+        let footer = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: footerSize, elementKind: CarouselBannerFooter.kind, alignment: .bottom)
+        section.boundarySupplementaryItems = [footer]
         
         section.visibleItemsInvalidationHandler = { (visibleItems, offset, env) in
             guard offset.x >= 0 else { return }

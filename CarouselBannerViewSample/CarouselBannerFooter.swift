@@ -12,7 +12,8 @@ class CarouselBannerFooter: UICollectionReusableView {
         pageControl = UIPageControl(frame: CGRect(origin: .zero, size: self.bounds.size))
         pageControl.pageIndicatorTintColor = UIColor.systemGray4
         pageControl.currentPageIndicatorTintColor = UIColor.gray
-        pageControl.numberOfPages = 5
+        // デフォルトでは PageControl がタップできるが、不要なので外しておく
+        pageControl.isUserInteractionEnabled = false
         self.addSubview(pageControl)
     }
     

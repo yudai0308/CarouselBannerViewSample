@@ -3,7 +3,7 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    internal var carouselBannerFooter: CarouselBannerFooter?
+    var carouselBannerFooter: CarouselBannerFooter?
     
     enum SectionType: Int {
         case carouselBanner = 0
@@ -35,6 +35,7 @@ class ViewController: UIViewController {
         collectionView.dataSource = dataSource
         
         let sectionItems = images.map { SectionItem.carouselBannerCell($0!) }
-        updateSnapshot(items: sectionItems, to: SectionType.carouselBanner)
+        let sectionData = [SectionType.carouselBanner: sectionItems]
+        updateSnapshot(sectionData: sectionData)
     }
 }
